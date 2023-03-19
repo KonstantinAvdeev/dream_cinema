@@ -1,0 +1,10 @@
+insert into files(name, path) values('2012', 'files/2012.jpg');
+insert into files(name, path) values('American_Gangster', 'files/American_Gangster.jpg');
+insert into files(name, path) values('krushenie', 'files/krushenie.jpg');
+insert into files(name, path) values('Mr_and_mrs_smith', 'files/Mr_and_mrs_smith.jpg');
+insert into files(name, path) values('psILoveYou', 'files/psILoveYou.jpg');
+insert into files(name, path) values('split', 'files/split.jpg');
+insert into files(name, path) values('survived', 'files/survived.jpg');
+insert into files(name, path) values('theGold', 'files/theGold.jpg');
+insert into files(name, path) values('vishka', 'files/vishka.jpg');
+insert into files(name, path) values('brother2', 'files/brother2.jpg');
