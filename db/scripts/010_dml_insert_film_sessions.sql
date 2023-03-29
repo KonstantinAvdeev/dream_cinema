@@ -25,7 +25,7 @@ VALUES (1, 1, '2023-03-30 15:20:00', '2023-03-30 17:20:00', 300);
 INSERT INTO film_sessions(film_id, halls_id, start_time, end_time, price)
 VALUES (2, 2, '2023-03-30 15:40:00', '2023-03-30 17:27:00', 350);
 INSERT INTO film_sessions(film_id, halls_id, start_time, end_time, price)
-VALUES (2, 1, '2023-03-30 18:00:00', '2023-01-01 19:47:00', 330);
+VALUES (2, 1, '2023-03-30 18:00:00', '2023-03-30 19:47:00', 330);
 INSERT INTO film_sessions(film_id, halls_id, start_time, end_time, price)
 VALUES (1, 2, '2023-03-30 18:00:00', '2023-03-30 20:00:00', 350);
 INSERT INTO film_sessions(film_id, halls_id, start_time, end_time, price)

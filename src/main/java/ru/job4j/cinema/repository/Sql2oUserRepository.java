@@ -8,6 +8,7 @@ import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 import ru.job4j.cinema.model.User;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @ThreadSafe
@@ -25,7 +26,10 @@ public class Sql2oUserRepository implements UserRepository {
     @Override
     public Optional<User> save(User user) {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("INSERT INTO users(fullName, email, password) VALUES(:fullName, :email, :password)", true)
+            var sql = """
+                    INSERT INTO users(full_name, email, password) VALUES(:fullName, :email, :password)
+                    """;
+            var query = connection.createQuery(sql, true)
                     .addParameter("fullName", user.getFullName())
                     .addParameter("email", user.getEmail())
                     .addParameter("password", user.getPassword());
@@ -43,8 +47,26 @@ public class Sql2oUserRepository implements UserRepository {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery("SELECT * FROM users WHERE email = :email AND password = :password");
             query.addParameter("email", email).addParameter("password", password);
-            var user = query.executeAndFetchFirst(User.class);
+            var user = query.setColumnMappings(User.COLUMN_MAPPING).executeAndFetchFirst(User.class);
             return Optional.ofNullable(user);
+        }
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("DELETE FROM users WHERE id = :id");
+            query.addParameter("id", id);
+            var affectedRows = query.executeUpdate().getResult();
+            return affectedRows > 0;
+        }
+    }
+
+    @Override
+    public Collection<User> findAll() {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("SELECT * FROM users");
+            return query.setColumnMappings(User.COLUMN_MAPPING).executeAndFetch(User.class);
         }
     }
 
