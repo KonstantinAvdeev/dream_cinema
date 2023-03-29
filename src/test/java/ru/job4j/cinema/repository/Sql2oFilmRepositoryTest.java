@@ -14,11 +14,11 @@ class Sql2oFilmRepositoryTest {
 
     private static Sql2oFilmRepository sql2oFilmRepository;
 
-    private static final Film film = new Film(3, "Крушение", "Пилоту Броуди Торрансу удаётся успешно "
+    private static final Film FILM_1 = new Film(3, "Крушение", "Пилоту Броуди Торрансу удаётся успешно "
             + "посадить повреждённый штормом самолёт на \n\t   враждебной территории. Вскоре выясняется, что уцелевшим угрожают "
             + "местные повстанцы, которые \n\t   хотят захватить пассажиров в заложники. Броуди должен защитить людей, пока не "
             + "прибудет помощь.", 2023, 4, 16, 107, 3);
-    private static final Film film2 = new Film(10, "Брат 2", "Участвуя в программе на телевидении, Данила Багров встречает своих"
+    private static final Film FILM_2 = new Film(10, "Брат 2", "Участвуя в программе на телевидении, Данила Багров встречает своих"
             + " друзей по службе Чечне. Одного из них внезапно убивают. Выясняется, что у того были неприятности из-за "
             + "брата-хоккеиста в Америке. Данила должен разобраться. Он вылетает в Америку и за компанию берёт с собой старшего "
             + "брата.",
@@ -44,13 +44,13 @@ class Sql2oFilmRepositoryTest {
     @Test
     public void whenFindById() {
         var film1 = sql2oFilmRepository.findById(3).get();
-        assertThat(film1).isEqualTo(film);
+        assertThat(film1).isEqualTo(FILM_1);
     }
 
     @Test
     public void whenFindAll() {
         var films = sql2oFilmRepository.findAll();
-        assertThat(films.containsAll(List.of(film, film2)));
+        assertThat(films.containsAll(List.of(FILM_1, FILM_2)));
     }
 
 }
