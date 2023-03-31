@@ -33,8 +33,12 @@ class FilmSessionControllerTest {
 
     @Test
     public void whenRequestFilmSessionListPageThenGetPageWithFilmSessions() {
-        var filmSession1 = new FilmSessionDto(1, "Сплит", "Большой зал", LocalDateTime.of(2023, 03, 30, 01, 00, 00), LocalDateTime.of(2023, 03, 30, 02, 47, 00), "150");
-        var filmSession2 = new FilmSessionDto(2, "Выживший", "Малый зал", LocalDateTime.of(2023, 03, 30, 01, 24, 00), LocalDateTime.of(2023, 03, 30, 04, 00, 00), "250");
+        var filmSession1 = new FilmSessionDto(1, "Сплит", "Большой зал",
+                LocalDateTime.of(2023, 03, 30, 01, 00, 00),
+                LocalDateTime.of(2023, 03, 30, 02, 47, 00), "150");
+        var filmSession2 = new FilmSessionDto(2, "Выживший", "Малый зал",
+                LocalDateTime.of(2023, 03, 30, 01, 24, 00),
+                LocalDateTime.of(2023, 03, 30, 04, 00, 00), "250");
         Collection<FilmSessionDto> expectedFilmSessions = List.of(filmSession1, filmSession2);
         when(filmSessionService.findAll()).thenReturn(expectedFilmSessions);
 
@@ -48,7 +52,9 @@ class FilmSessionControllerTest {
 
     @Test
     public void whenRequestFilmSessionByIdThenGetTicketBuyPage() {
-        var filmSession1 = Optional.of(new FilmSessionDto(1, "Сплит", "Большой зал", LocalDateTime.of(2023, 03, 30, 01, 00, 00), LocalDateTime.of(2023, 03, 30, 02, 47, 00), "150"));
+        var filmSession1 = Optional.of(new FilmSessionDto(1, "Сплит", "Большой зал",
+                LocalDateTime.of(2023, 03, 30, 01, 00, 00),
+                LocalDateTime.of(2023, 03, 30, 02, 47, 00), "150"));
         var expectedRowList = List.of(1, 2, 3, 4, 5);
         var expectedPlaceList = List.of(1, 2, 3, 4, 5);
         when(filmSessionService.findById(anyInt())).thenReturn(filmSession1);

@@ -14,12 +14,14 @@ class Sql2oHallRepositoryTest {
 
     private static Sql2oHallRepository sql2oHallRepository;
     private static Hall hall1 = new Hall(1, "Большой зал", 20, 30, "Большой зал на 600 мест");
-    private static Hall hall2 = new Hall(2, "Малый зал", 8, 10, "Небольшой зал повышенного комфорта на 80 мест");
+    private static Hall hall2 = new Hall(2, "Малый зал", 8, 10, "Небольшой зал "
+            + "повышенного комфорта на 80 мест");
 
     @BeforeAll
     public static void initRepositories() throws Exception {
         var properties = new Properties();
-        try (var inputStream = Sql2oHallRepositoryTest.class.getClassLoader().getResourceAsStream("connection.properties")) {
+        try (var inputStream = Sql2oHallRepositoryTest.class.getClassLoader()
+                .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }
         var url = properties.getProperty("datasource.url");

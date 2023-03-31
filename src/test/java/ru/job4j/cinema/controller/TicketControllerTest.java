@@ -40,7 +40,8 @@ class TicketControllerTest {
 
     @Test
     public void whenBuyTicketThenGetErrorPage() {
-        var expectedError = "Не удаётся купить билет на указанное место. Попробуйте другой вариант.";
+        var expectedError = "Не удаётся купить билет на указанное место. Попробуйте другой "
+                + "вариант.";
         when(ticketService.save(any())).thenReturn(Optional.empty());
 
         var model = new ConcurrentModel();

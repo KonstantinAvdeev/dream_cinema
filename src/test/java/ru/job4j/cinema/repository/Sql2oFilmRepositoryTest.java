@@ -14,20 +14,22 @@ class Sql2oFilmRepositoryTest {
 
     private static Sql2oFilmRepository sql2oFilmRepository;
 
-    private static final Film FILM_1 = new Film(3, "Крушение", "Пилоту Броуди Торрансу удаётся успешно "
-            + "посадить повреждённый штормом самолёт на \n\t   враждебной территории. Вскоре выясняется, что уцелевшим угрожают "
-            + "местные повстанцы, которые \n\t   хотят захватить пассажиров в заложники. Броуди должен защитить людей, пока не "
+    private static final Film FILM_1 = new Film(3, "Крушение", "Пилоту Броуди Торрансу удаётся "
+            + "успешно посадить повреждённый штормом самолёт на \n\t   враждебной территории. "
+            + "Вскоре выясняется, что уцелевшим угрожают местные повстанцы, которые \n\t   хотят "
+            + "захватить пассажиров в заложники. Броуди должен защитить людей, пока не "
             + "прибудет помощь.", 2023, 4, 16, 107, 3);
-    private static final Film FILM_2 = new Film(10, "Брат 2", "Участвуя в программе на телевидении, Данила Багров встречает своих"
-            + " друзей по службе Чечне. Одного из них внезапно убивают. Выясняется, что у того были неприятности из-за "
-            + "брата-хоккеиста в Америке. Данила должен разобраться. Он вылетает в Америку и за компанию берёт с собой старшего "
-            + "брата.",
-            2000, 4, 16, 127, 10);
+    private static final Film FILM_2 = new Film(10, "Брат 2", "Участвуя в программе на "
+            + "телевидении, Данила Багров встречает своих друзей по службе Чечне. Одного из них "
+            + "внезапно убивают. Выясняется, что у того были неприятности из-за брата-хоккеиста в "
+            + "Америке. Данила должен разобраться. Он вылетает в Америку и за компанию берёт "
+            + "с собой старшего брата.", 2000, 4, 16, 127, 10);
 
     @BeforeAll
     public static void initRepositories() throws Exception {
         var properties = new Properties();
-        try (var inputStream = Sql2oFilmRepositoryTest.class.getClassLoader().getResourceAsStream("connection.properties")) {
+        try (var inputStream = Sql2oFilmRepositoryTest.class.getClassLoader()
+                .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }
         var url = properties.getProperty("datasource.url");

@@ -19,7 +19,8 @@ class Sql2oUserRepositoryTest {
     @BeforeAll
     public static void initRepositories() throws Exception {
         var properties = new Properties();
-        try (var inputStream = Sql2oUserRepositoryTest.class.getClassLoader().getResourceAsStream("connection.properties")) {
+        try (var inputStream = Sql2oUserRepositoryTest.class.getClassLoader()
+                .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }
         var url = properties.getProperty("datasource.url");
@@ -45,7 +46,8 @@ class Sql2oUserRepositoryTest {
     public void whenSaveThenGetSame() {
         User test = new User(1, "Kolya", "111@mail.ru", "123456");
         var user = sql2oUserRepository.save(test);
-        var savedUser = sql2oUserRepository.findByEmailAndPassword(test.getEmail(), test.getPassword());
+        var savedUser = sql2oUserRepository.findByEmailAndPassword(test.getEmail(),
+                test.getPassword());
         assertThat(savedUser).usingRecursiveComparison().isEqualTo(user);
     }
 
