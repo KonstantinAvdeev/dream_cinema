@@ -25,13 +25,14 @@ public class FilmSessionController {
     @GetMapping("/{id}")
     public String getSessionById(Model model, @PathVariable int id) {
         var sessionOptional = filmSessionService.findById(id);
+        var session = sessionOptional.get();
         if (sessionOptional.isEmpty()) {
             model.addAttribute("error", "Выбран неверный сеанс, попробуйте выюрать другой!");
             return "errors/404";
         }
         model.addAttribute("filmSession", sessionOptional.get());
-        model.addAttribute("rowNumbers", hallService.getRowsByName(sessionOptional.get().getHallName()));
-        model.addAttribute("placeNumbers", hallService.getPlacesByName(sessionOptional.get().getHallName()));
+        model.addAttribute("rowNumbers", hallService.getRowsByName(session.getHallName()));
+        model.addAttribute("placeNumbers", hallService.getPlacesByName(session.getHallName()));
         return "tickets/buy";
     }
 

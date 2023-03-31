@@ -11,7 +11,8 @@ public class FilmSessionDto {
     private LocalDateTime endTime;
     private String price;
 
-    public FilmSessionDto(int id, String filmName, String hallName, LocalDateTime startTime, LocalDateTime endTime, String price) {
+    public FilmSessionDto(int id, String filmName, String hallName, LocalDateTime startTime,
+                          LocalDateTime endTime, String price) {
         this.id = id;
         this.filmName = filmName;
         this.hallName = hallName;

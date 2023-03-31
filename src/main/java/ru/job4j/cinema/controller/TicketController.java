@@ -26,7 +26,8 @@ public class TicketController {
                     + "другой вариант.");
             return "errors/404";
         }
-        String ticketBought = String.format("Вы купили билет на %s ряд %s место", ticketOptional.get().getRowNumber(),
+        String ticketBought = String.format("Вы купили билет на %s ряд %s место",
+                ticketOptional.get().getRowNumber(),
                 ticketOptional.get().getPlaceNumber());
         model.addAttribute("message", ticketBought);
         return "tickets/ticketBought";

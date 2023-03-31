@@ -14,7 +14,8 @@ public class SimpleTicketService implements TicketService {
     private final TicketRepository ticketRepository;
     private final FilmSessionService filmSessionService;
 
-    public SimpleTicketService(TicketRepository ticketRepository, FilmSessionService filmSessionService) {
+    public SimpleTicketService(TicketRepository ticketRepository,
+                               FilmSessionService filmSessionService) {
         this.ticketRepository = ticketRepository;
         this.filmSessionService = filmSessionService;
     }
@@ -30,10 +31,14 @@ public class SimpleTicketService implements TicketService {
         Optional<Ticket> ticketOptional = ticketRepository.findById(id);
         if (ticketOptional.isPresent()) {
             var ticketDto = new TicketDto(ticketOptional.get().getId(),
-                    filmSessionService.findById(ticketOptional.get().getSessionId()).get().getFilmName(),
-                    filmSessionService.findById(ticketOptional.get().getSessionId()).get().getHallName(),
-                    filmSessionService.findById(ticketOptional.get().getSessionId()).get().getStartTime(),
-                    filmSessionService.findById(ticketOptional.get().getSessionId()).get().getEndTime(),
+                    filmSessionService.findById(ticketOptional.get().getSessionId()).get()
+                            .getFilmName(),
+                    filmSessionService.findById(ticketOptional.get().getSessionId()).get()
+                            .getHallName(),
+                    filmSessionService.findById(ticketOptional.get().getSessionId()).get()
+                            .getStartTime(),
+                    filmSessionService.findById(ticketOptional.get().getSessionId()).get()
+                            .getEndTime(),
                     ticketOptional.get().getRowNumber(), ticketOptional.get().getPlaceNumber());
             result = Optional.ofNullable(ticketDto);
         }

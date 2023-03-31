@@ -28,7 +28,8 @@ public class Film {
     public Film() {
     }
 
-    public Film(int id, String name, String description, int year, int genreId, int minimalAge, int durationInMinutes, int fileId) {
+    public Film(int id, String name, String description, int year, int genreId,
+                int minimalAge, int durationInMinutes, int fileId) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -112,14 +113,18 @@ public class Film {
             return false;
         }
         Film film = (Film) o;
-        return id == film.id && year == film.year && genreId == film.genreId && minimalAge == film.minimalAge
-                && durationInMinutes == film.durationInMinutes && fileId == film.fileId
-                && Objects.equals(name, film.name) && Objects.equals(description, film.description);
+        return id == film.id && year == film.year && genreId == film.genreId
+                && minimalAge == film.minimalAge
+                && durationInMinutes == film.durationInMinutes
+                && fileId == film.fileId
+                && Objects.equals(name, film.name)
+                && Objects.equals(description, film.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, year, genreId, minimalAge, durationInMinutes, fileId);
+        return Objects.hash(id, name, description, year, genreId, minimalAge,
+                durationInMinutes, fileId);
     }
 
     @Override
