@@ -24,14 +24,16 @@ public class SimpleFilmService implements FilmService {
 
     @Override
     public Optional<FilmDto> findById(int id) {
-        return filmRepository.findById(id).stream().map(film -> new FilmDto(film.getId(), film.getName(), film.getDescription(),
-                film.getYear(), genreName(film), film.getMinimalAge(), film.getDurationInMinutes(), film.getFileId())).findAny();
+        return filmRepository.findById(id).stream().map(film -> new FilmDto(film.getId(),
+                film.getName(), film.getDescription(), film.getYear(), genreName(film),
+                film.getMinimalAge(), film.getDurationInMinutes(), film.getFileId())).findAny();
     }
 
     @Override
     public Collection<FilmDto> findAll() {
-        return filmRepository.findAll().stream().map(film -> new FilmDto(film.getId(), film.getName(), film.getDescription(),
-                        film.getYear(), genreName(film), film.getMinimalAge(), film.getDurationInMinutes(), film.getFileId()))
+        return filmRepository.findAll().stream().map(film -> new FilmDto(film.getId(),
+                        film.getName(), film.getDescription(), film.getYear(), genreName(film),
+                        film.getMinimalAge(), film.getDurationInMinutes(), film.getFileId()))
                 .collect(Collectors.toList());
     }
 

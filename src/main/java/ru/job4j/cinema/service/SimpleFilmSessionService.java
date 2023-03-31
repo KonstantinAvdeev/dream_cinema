@@ -18,7 +18,8 @@ public class SimpleFilmSessionService implements FilmSessionService {
     private final FilmService filmService;
     private final HallService hallService;
 
-    public SimpleFilmSessionService(FilmSessionRepository filmSessionRepository, FilmService filmService, HallService hallService) {
+    public SimpleFilmSessionService(FilmSessionRepository filmSessionRepository,
+                                    FilmService filmService, HallService hallService) {
         this.filmSessionRepository = filmSessionRepository;
         this.filmService = filmService;
         this.hallService = hallService;
@@ -29,8 +30,10 @@ public class SimpleFilmSessionService implements FilmSessionService {
         Optional<FilmSessionDto> result = Optional.empty();
         Optional<FilmSession> optionalFilmSession = filmSessionRepository.findById(id);
         if (optionalFilmSession.isPresent()) {
-            var filmSessionDto = new FilmSessionDto(optionalFilmSession.get().getId(), filmName(optionalFilmSession.get()),
-                    hallName(optionalFilmSession.get()), optionalFilmSession.get().getStartTime(), optionalFilmSession.get().getEndTime(),
+            var filmSessionDto = new FilmSessionDto(optionalFilmSession.get().getId(),
+                    filmName(optionalFilmSession.get()),
+                    hallName(optionalFilmSession.get()), optionalFilmSession.get().getStartTime(),
+                    optionalFilmSession.get().getEndTime(),
                     String.valueOf(optionalFilmSession.get().getPrice()));
             result = Optional.ofNullable(filmSessionDto);
         }
@@ -39,8 +42,10 @@ public class SimpleFilmSessionService implements FilmSessionService {
 
     @Override
     public Collection<FilmSessionDto> findAll() {
-        return filmSessionRepository.findAll().stream().map(filmSession -> new FilmSessionDto(filmSession.getId(), filmName(filmSession),
-                        hallName(filmSession), filmSession.getStartTime(), filmSession.getEndTime(), String.valueOf(filmSession.getPrice())))
+        return filmSessionRepository.findAll().stream().map(filmSession ->
+                        new FilmSessionDto(filmSession.getId(), filmName(filmSession),
+                                hallName(filmSession), filmSession.getStartTime(),
+                                filmSession.getEndTime(), String.valueOf(filmSession.getPrice())))
                 .collect(Collectors.toList());
     }
 

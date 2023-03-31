@@ -91,6 +91,10 @@
         <module name="TodoComment"/>
         <module name="UpperEll"/>
 
+        <module name="LineLength">
+            <property name="max" value="100"/>
+        </module>
+
     </module>
 
 </module>

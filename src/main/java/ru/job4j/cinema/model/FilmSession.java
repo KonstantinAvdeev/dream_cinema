@@ -25,7 +25,8 @@ public class FilmSession {
     public FilmSession() {
     }
 
-    public FilmSession(int id, int filmId, int hallsId, LocalDateTime startTime, LocalDateTime endTime, int price) {
+    public FilmSession(int id, int filmId, int hallsId, LocalDateTime startTime,
+                       LocalDateTime endTime, int price) {
         this.id = id;
         this.filmId = filmId;
         this.hallsId = hallsId;
@@ -91,8 +92,9 @@ public class FilmSession {
             return false;
         }
         FilmSession that = (FilmSession) o;
-        return id == that.id && filmId == that.filmId && hallsId == that.hallsId && price == that.price
-                && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime);
+        return id == that.id && filmId == that.filmId && hallsId == that.hallsId
+                && price == that.price && Objects.equals(startTime, that.startTime)
+                && Objects.equals(endTime, that.endTime);
     }
 
     @Override

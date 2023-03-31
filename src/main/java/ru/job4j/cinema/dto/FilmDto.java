@@ -10,7 +10,8 @@ public class FilmDto {
     private int durationInMinutes;
     private int fileId;
 
-    public FilmDto(int id, String name, String description, int year, String genre, int minimalAge, int durationInMinutes, int fileId) {
+    public FilmDto(int id, String name, String description, int year, String genre,
+                   int minimalAge, int durationInMinutes, int fileId) {
         this.id = id;
         this.name = name;
         this.description = description;

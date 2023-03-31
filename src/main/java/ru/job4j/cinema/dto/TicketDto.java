@@ -12,7 +12,8 @@ public class TicketDto {
     private int rowNumber;
     private int placeNumber;
 
-    public TicketDto(int id, String filmName, String hallName, LocalDateTime startTime, LocalDateTime endTime, int rowNumber, int placeNumber) {
+    public TicketDto(int id, String filmName, String hallName, LocalDateTime startTime,
+                     LocalDateTime endTime, int rowNumber, int placeNumber) {
         this.id = id;
         this.filmName = filmName;
         this.hallName = hallName;
